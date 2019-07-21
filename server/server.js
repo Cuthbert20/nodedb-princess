@@ -7,5 +7,6 @@ const PORT = 5001
 app.use(express.json())
 
 app.get('/api/princess', princessCtrl.princesses)
+app.put('/api/princess/:id', princessCtrl.updatePrincess)
 
 app.listen(PORT, () => console.log(`${PORT}, is always listening`))
