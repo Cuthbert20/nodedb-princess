@@ -24,5 +24,22 @@ module.exports = {
         //disney[index].info = info   If we leave it active then when updating we would also need to update the info or it would be removed
         //disney[index].pets = pets   If we leave it active then when updating we would also need to update the info or it would be removed
         res.status(200).send(disney)
+    },
+    newPrincess: (req,res) => {
+        //console.log(req.body)
+        //now we just need to deconstruct req.body or are we using the spread operator I AM NOT SURE ASK FOR HELP.
+        disney.push({...req.body,id})
+        id++
+        res.status(200).send(disney)
+    },
+    queryFinder: (req,res) => {
+        //req.query gives us access to whichever key we are deconstructing, in this case name then we can use it in our query
+        //remeber ? is the end of the url, then you enter the key, then a = then the value of the key you want to delete.
+        const { name } = req.query
+        console.log("name", req.query, name)
+        let rightPrincess = disney.filter(elm => {
+            return elm.name === name
+        })
+       res.status(200).send(rightPrincess)
     }
 }
