@@ -41,5 +41,15 @@ module.exports = {
             return elm.name === name
         })
        res.status(200).send(rightPrincess)
+    },
+    princessDelete: (req,res) => {
+        //firt we need to deconstruct or params which is id
+        const { id } = req.params
+        //console.log("id",req.params,id)
+        const index = disney.findIndex(i => {
+            return i.id === +id
+        })
+        disney.splice(index,1)
+        res.status(200).send(disney)
     }
 }
